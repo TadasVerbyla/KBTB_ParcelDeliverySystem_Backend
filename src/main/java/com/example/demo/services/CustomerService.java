@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.Parcel;
 import com.example.demo.repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +25,14 @@ public class CustomerService {
     }
 
     @Transactional
-    public void updateUser(Long userId, String sentParcels, String incomingParcels, String password, String username, String email, String address) {
+    public void updateUser(Long userId, List<Parcel> sentParcels, List<Parcel> incomingParcels, String password, String username, String email, String address) {
 
         Customer customer = customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Specified entry does not exist. "));
 
-        if (sentParcels != null &&
-                sentParcels.length() > 0 &&
-                !Objects.equals(customer.getSentParcels(), sentParcels)) {
+        if (sentParcels != null) {
             customer.setSentParcels(sentParcels);
         }
-        if (incomingParcels != null &&
-                incomingParcels.length() > 0 &&
-                !Objects.equals(customer.getIncomingParcels(), incomingParcels)) {
+        if (incomingParcels != null) {
             customer.setIncomingParcels(incomingParcels);
         }
         if (password != null &&

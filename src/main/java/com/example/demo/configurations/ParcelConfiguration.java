@@ -12,11 +12,11 @@ import java.util.List;
 @Configuration
 public class ParcelConfiguration {
     @Bean
-    CommandLineRunner commandLineRunner (ParcelRepository repository) {
+    CommandLineRunner commandLineRunner2 (ParcelRepository repository) {
         return args -> {
-            Parcel A = new Parcel("Jonas", "Petras", "A g. 127", ParcelEnum.Size.SMALL);
-            Parcel B = new Parcel("Tomas", "Jonas", "A g. 128", ParcelEnum.Size.LARGE);
-            repository.saveAll(List.of(A, B));
+            //Parcel A = new Parcel("Jonas", "Petras", "A g. 127", ParcelEnum.Size.SMALL);
+            //Parcel B = new Parcel("Tomas", "Jonas", "A g. 128", ParcelEnum.Size.LARGE);
+            //repository.saveAll(List.of(A, B));
         };
     }
 }

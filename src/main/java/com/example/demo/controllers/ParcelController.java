@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
 import com.example.demo.enums.ParcelEnum;
 import com.example.demo.services.ParcelService;
@@ -36,10 +37,10 @@ public class ParcelController {
     @PutMapping(path = "{parcelId}")
     public void updateParcel(
             @PathVariable("parcelId") Long parcelId,
-            @RequestParam(required = false) String sender,
-            @RequestParam(required = false) String receiver,
+            @RequestParam(required = false) Customer senderId,
+            @RequestParam(required = false) Customer receiverId,
             @RequestParam(required = false) String deliveryAddress,
             @RequestParam(required = false) ParcelEnum.Size size) {
-        parcelService.updateParcel(parcelId, sender, receiver, deliveryAddress, size);
+        parcelService.updateParcel(parcelId, senderId, receiverId, deliveryAddress, size);
     }
 }

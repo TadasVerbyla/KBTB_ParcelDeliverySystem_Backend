@@ -2,14 +2,18 @@ package com.example.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String sentParcels;
-    private String incomingParcels;
+    @OneToMany(mappedBy = "sender")
+    private List<Parcel> sentParcels;
+    @OneToMany(mappedBy = "receiver")
+    private List<Parcel> incomingParcels;
     private String password;
     private String username;
     private String email;
@@ -41,19 +45,19 @@ public class Customer {
         this.id = id;
     }
 
-    public String getSentParcels() {
+    public List<Parcel> getSentParcels() {
         return sentParcels;
     }
 
-    public void setSentParcels(String sentParcels) {
+    public void setSentParcels(List<Parcel> sentParcels) {
         this.sentParcels = sentParcels;
     }
 
-    public String getIncomingParcels() {
+    public List<Parcel> getIncomingParcels() {
         return incomingParcels;
     }
 
-    public void setIncomingParcels(String incomingParcels) {
+    public void setIncomingParcels(List<Parcel> incomingParcels) {
         this.incomingParcels = incomingParcels;
     }
 

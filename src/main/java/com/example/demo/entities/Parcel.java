@@ -9,15 +9,17 @@ public class Parcel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String sender;
-    private String receiver;
+    @ManyToOne
+    private Customer sender;
+    @ManyToOne
+    private Customer receiver;
     private String deliveryAddress;
     private ParcelEnum.Size size;
 
     public Parcel() {
     }
 
-    public Parcel(Long id, String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
+    public Parcel(Long id, Customer sender, Customer receiver, String deliveryAddress, ParcelEnum.Size size) {
         this.id = id;
         this.sender = sender;
         this.receiver = receiver;
@@ -25,7 +27,7 @@ public class Parcel {
         this.size = size;
     }
 
-    public Parcel(String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
+    public Parcel(Customer sender, Customer receiver, String deliveryAddress, ParcelEnum.Size size) {
         this.sender = sender;
         this.receiver = receiver;
         this.deliveryAddress = deliveryAddress;
@@ -40,19 +42,19 @@ public class Parcel {
         this.id = id;
     }
 
-    public String getSender() {
+    public Customer getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(Customer sender) {
         this.sender = sender;
     }
 
-    public String getReceiver() {
+    public Customer getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(Customer receiver) {
         this.receiver = receiver;
     }
 

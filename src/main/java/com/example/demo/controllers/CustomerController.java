@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.Parcel;
 import com.example.demo.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class CustomerController {
     @PutMapping(path = "{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
-            @RequestParam(required = false) String sentParcels,
-            @RequestParam(required = false) String incomingParcels,
+            @RequestParam(required = false) List<Parcel> sentParcels,
+            @RequestParam(required = false) List<Parcel> incomingParcels,
             @RequestParam(required = false) String password,
             @RequestParam(required = false) String username,
             @RequestParam(required = false) String email,

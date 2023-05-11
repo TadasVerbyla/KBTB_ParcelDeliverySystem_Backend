@@ -1,7 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Parcel;
+import com.example.demo.entities.Customer;
 import com.example.demo.enums.ParcelEnum;
+import com.example.demo.repositories.CustomerRepository;
 import com.example.demo.repositories.ParcelRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,13 @@ import java.util.Objects;
 public class ParcelService {
 
     private final ParcelRepository parcelRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
-    public ParcelService(ParcelRepository parcelRepository)
+    public ParcelService(ParcelRepository parcelRepository, CustomerRepository customerRepository)
     {
         this.parcelRepository = parcelRepository;
+        this.customerRepository = customerRepository;
     }
     public List<Parcel> getParcels(){
         return parcelRepository.findAll();
@@ -36,18 +40,16 @@ public class ParcelService {
     }
 
     @Transactional
-    public void updateParcel(Long parcelId, String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
+    public void updateParcel(Long parcelId, Customer sender, Customer receiver, String deliveryAddress, ParcelEnum.Size size) {
 
         Parcel parcel = parcelRepository.findById(parcelId).orElseThrow(() -> new IllegalStateException("Specified entry does not exist. "));
 
         if (sender != null &&
-                sender.length() > 0 &&
                 !Objects.equals(parcel.getSender(), sender)) {
             parcel.setSender(sender);
         }
 
         if (receiver != null &&
-                receiver.length() > 0 &&
                 !Objects.equals(parcel.getReceiver(), receiver)) {
             parcel.setReceiver(receiver);
         }
