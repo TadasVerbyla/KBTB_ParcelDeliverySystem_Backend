@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Parcel;
+import com.example.demo.enums.ParcelEnum;
 import com.example.demo.services.ParcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,9 +36,10 @@ public class ParcelController {
     @PutMapping(path = "{parcelId}")
     public void updateParcel(
             @PathVariable("parcelId") Long parcelId,
+            @RequestParam(required = false) String sender,
+            @RequestParam(required = false) String receiver,
             @RequestParam(required = false) String deliveryAddress,
-            @RequestParam(required = false) String recipient,
-            @RequestParam(required = false) Integer weight) {
-        parcelService.updateParcel(parcelId, deliveryAddress, recipient, weight);
+            @RequestParam(required = false) ParcelEnum.Size size) {
+        parcelService.updateParcel(parcelId, sender, receiver, deliveryAddress, size);
     }
 }

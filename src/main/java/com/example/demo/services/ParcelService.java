@@ -1,10 +1,10 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Parcel;
+import com.example.demo.enums.ParcelEnum;
 import com.example.demo.repositories.ParcelRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,9 +36,21 @@ public class ParcelService {
     }
 
     @Transactional
-    public void updateParcel(Long parcelId, String deliveryAddress, String recipient, Integer weight) {
+    public void updateParcel(Long parcelId, String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
 
         Parcel parcel = parcelRepository.findById(parcelId).orElseThrow(() -> new IllegalStateException("Specified entry does not exist. "));
+
+        if (sender != null &&
+                sender.length() > 0 &&
+                !Objects.equals(parcel.getSender(), sender)) {
+            parcel.setSender(sender);
+        }
+
+        if (receiver != null &&
+                receiver.length() > 0 &&
+                !Objects.equals(parcel.getReceiver(), receiver)) {
+            parcel.setReceiver(receiver);
+        }
 
         if (deliveryAddress != null &&
                 deliveryAddress.length() > 0 &&
@@ -46,17 +58,9 @@ public class ParcelService {
             parcel.setDeliveryAddress(deliveryAddress);
         }
 
-        if (recipient != null &&
-                recipient.length() > 0 &&
-                !Objects.equals(parcel.getRecipient(), recipient)) {
-            parcel.setRecipient(recipient);
-        }
-
-        if (weight != null &&
-                weight > 0 &&
-                weight < 10000 &&
-                !(Objects.equals(parcel.getWeight(), weight))) {
-            parcel.setWeight(weight);
+        if (size != null &&
+                !(Objects.equals(parcel.getSize(), size))) {
+            parcel.setSize(size);
         }
     }
 }

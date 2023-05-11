@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.enums.ParcelEnum;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,24 +9,27 @@ public class Parcel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String sender;
+    private String receiver;
     private String deliveryAddress;
-    private String recipient;
-    private Integer weight;
+    private ParcelEnum.Size size;
 
     public Parcel() {
     }
 
-    public Parcel(Long id, String deliveryAddress, String recipient, Integer weight) {
+    public Parcel(Long id, String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
         this.id = id;
+        this.sender = sender;
+        this.receiver = receiver;
         this.deliveryAddress = deliveryAddress;
-        this.recipient = recipient;
-        this.weight = weight;
+        this.size = size;
     }
 
-    public Parcel(String deliveryAddress, String recipient, Integer weight) {
+    public Parcel(String sender, String receiver, String deliveryAddress, ParcelEnum.Size size) {
+        this.sender = sender;
+        this.receiver = receiver;
         this.deliveryAddress = deliveryAddress;
-        this.recipient = recipient;
-        this.weight = weight;
+        this.size = size;
     }
 
     public Long getId() {
@@ -36,6 +40,22 @@ public class Parcel {
         this.id = id;
     }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -44,29 +64,22 @@ public class Parcel {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public String getRecipient() {
-        return recipient;
+    public ParcelEnum.Size getSize() {
+        return size;
     }
 
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
+    public void setSize(ParcelEnum.Size size) {
+        this.size = size;
     }
 
     @Override
     public String toString() {
-        return "parcel{" +
+        return "Parcel{" +
                 "id=" + id +
+                ", sender='" + sender + '\'' +
+                ", receiver='" + receiver + '\'' +
                 ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", recipient='" + recipient + '\'' +
-                ", weight=" + weight +
+                ", size=" + size +
                 '}';
     }
 }

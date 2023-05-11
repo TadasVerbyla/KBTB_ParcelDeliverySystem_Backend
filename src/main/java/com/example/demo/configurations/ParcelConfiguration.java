@@ -1,6 +1,7 @@
 package com.example.demo.configurations;
 
 import com.example.demo.entities.Parcel;
+import com.example.demo.enums.ParcelEnum;
 import com.example.demo.repositories.ParcelRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +14,8 @@ public class ParcelConfiguration {
     @Bean
     CommandLineRunner commandLineRunner (ParcelRepository repository) {
         return args -> {
-            Parcel A = new Parcel("AAAA", "1", 2555);
-            Parcel B = new Parcel("BBBB", "2", 3221);
+            Parcel A = new Parcel("Jonas", "Petras", "A g. 127", ParcelEnum.Size.SMALL);
+            Parcel B = new Parcel("Tomas", "Jonas", "A g. 128", ParcelEnum.Size.LARGE);
             repository.saveAll(List.of(A, B));
         };
     }
