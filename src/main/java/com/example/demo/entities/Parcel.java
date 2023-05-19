@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.enums.ParcelEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,8 +11,10 @@ public class Parcel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Customer sender;
     @ManyToOne
+    @JsonIgnore
     private Customer receiver;
     private String deliveryAddress;
     private ParcelEnum.Size size;

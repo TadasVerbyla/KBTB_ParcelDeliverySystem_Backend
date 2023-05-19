@@ -27,6 +27,9 @@ public class ParcelService {
     public List<Parcel> getParcels(){
         return parcelRepository.findAll();
     }
+    public Parcel getParcel(Long parcelId){
+       return parcelRepository.findById(parcelId).orElseThrow(() -> new IllegalStateException("Specified entry does not exist. "));
+    };
 
     public void addNewParcel(Parcel parcel) {
         parcelRepository.save(parcel);

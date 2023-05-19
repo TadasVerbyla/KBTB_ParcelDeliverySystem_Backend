@@ -23,6 +23,10 @@ public class ParcelController {
     public List<Parcel> getParcels(){
         return parcelService.getParcels();
     }
+    @GetMapping(path = "{parcelId}")
+    public Parcel getParcel(@PathVariable("parcelId") Long parcelId){
+        return parcelService.getParcel(parcelId);
+    }
 
     @PostMapping
     public void addNewParcel(@RequestBody Parcel parcel) {

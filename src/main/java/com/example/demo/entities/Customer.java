@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,9 +12,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany(mappedBy = "sender")
-    private List<Parcel> sentParcels;
+    private List<Parcel> sentParcels = new ArrayList<>();
     @OneToMany(mappedBy = "receiver")
-    private List<Parcel> incomingParcels;
+    private List<Parcel> incomingParcels = new ArrayList<>();
     private String password;
     private String username;
     private String email;

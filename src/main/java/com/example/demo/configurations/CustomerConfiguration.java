@@ -16,10 +16,10 @@ public class CustomerConfiguration {
     @Bean
     CommandLineRunner commandLineRunner (CustomerRepository customerRepository, ParcelRepository parcelRepository) {
         return args -> {
-            Customer A = new Customer("abc", "Petras", "p@mail.com", "ParcelEnum.Size.SMALL");
-            Customer B = new Customer("def", "Jonas", "j@mail.com", "ParcelEnum.Size.LARGE");
-            customerRepository.saveAll(List.of(A, B));
-            Parcel X = new Parcel(A, B, "aaa", ParcelEnum.Size.LARGE);
+            //Customer A = new Customer("abc", "Petras", "p@mail.com", "ParcelEnum.Size.SMALL");
+            //Customer B = new Customer("def", "Jonas", "j@mail.com", "ParcelEnum.Size.LARGE");
+            //customerRepository.saveAll(List.of(A, B));
+            //Parcel X = new Parcel(A, B, "aaa", ParcelEnum.Size.LARGE);
         };
     }
 }
