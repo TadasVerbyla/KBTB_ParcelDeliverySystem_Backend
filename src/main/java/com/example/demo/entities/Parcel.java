@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.enums.ShippingMethodEnum;
 import com.example.demo.enums.ParcelEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,15 +20,19 @@ public class Parcel {
     //@JoinColumn(name = "receiver_id")
     @JsonIgnore
     private Customer receiver;
-
+   // @ManyToOne
+   // @JoinColumn(name = "parcel_machine_id")
+    //private ParcelMachine parcelMachine;
     private String deliveryAddress;
+    @Enumerated
     private ParcelEnum.Size size;
+    @Enumerated
+    private ShippingMethodEnum deliveryMethod;
     @JsonProperty("_senderId")
     public Long getSenderId() {
         return sender != null ? sender.getId() : null;
     }
 
-    // Getter method for receiverId
     @JsonProperty("_receiverId")
     public Long getReceiverId() {
         return receiver != null ? receiver.getId() : null;
@@ -90,7 +95,15 @@ public class Parcel {
     public void setSize(ParcelEnum.Size size) {
         this.size = size;
     }
-   /* @PostLoad
+
+    public ShippingMethodEnum getDeliveryMethod() {
+        return deliveryMethod;
+    }
+
+    public void setDeliveryMethod(ShippingMethodEnum deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
+    }
+    /* @PostLoad
     private void populateSenderAndReceiverIds() {
         if (sender != null) {
             senderId = sender.getId();
