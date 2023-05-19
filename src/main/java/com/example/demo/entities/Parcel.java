@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import com.example.demo.enums.ParcelEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,13 +12,26 @@ public class Parcel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
+    //@JoinColumn(name = "sender_id")
     @JsonIgnore
     private Customer sender;
     @ManyToOne
+    //@JoinColumn(name = "receiver_id")
     @JsonIgnore
     private Customer receiver;
+
     private String deliveryAddress;
     private ParcelEnum.Size size;
+    @JsonProperty("_senderId")
+    public Long getSenderId() {
+        return sender != null ? sender.getId() : null;
+    }
+
+    // Getter method for receiverId
+    @JsonProperty("_receiverId")
+    public Long getReceiverId() {
+        return receiver != null ? receiver.getId() : null;
+    }
 
     public Parcel() {
     }
@@ -76,6 +90,15 @@ public class Parcel {
     public void setSize(ParcelEnum.Size size) {
         this.size = size;
     }
+   /* @PostLoad
+    private void populateSenderAndReceiverIds() {
+        if (sender != null) {
+            senderId = sender.getId();
+        }
+        if (receiver != null) {
+            receiverId = receiver.getId();
+        }
+    }*/
 
     @Override
     public String toString() {
