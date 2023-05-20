@@ -1,13 +1,18 @@
 package com.example.demo.entities;
 
+import com.example.demo.enums.RoleEnum;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table
-public class Customer {
+public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -62,6 +67,7 @@ public class Customer {
         this.incomingParcels = incomingParcels;
     }
 
+
     public String getPassword() {
         return password;
     }
@@ -73,6 +79,7 @@ public class Customer {
     public String getUsername() {
         return username;
     }
+
 
     public void setUsername(String username) {
         this.username = username;

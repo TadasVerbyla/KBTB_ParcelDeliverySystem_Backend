@@ -1,19 +1,24 @@
 package com.example.demo.enums;
 
 public enum ShippingMethodEnum {
-    TERMINAL_TERMINAL(1),
-    COURIER_TERMINAL(2),
-    COURIER_COURIER(3),
-    TERMINAL_COURIER(4),
-    EXPRESS(5);
-    private int id;
+    TERMINAL_TERMINAL(1,"Terminal-to-terminal"),
+    COURIER_TERMINAL(2,"Home-to-terminal"),
+    COURIER_COURIER(3,"Home-to-home"),
+    TERMINAL_COURIER(4,"Terminal-to-home");
 
-    ShippingMethodEnum(int id) {
-        this.id = id;
+    private int code;
+    private String description;
+
+
+    ShippingMethodEnum(int code, String description) {
+        this.code = code;
+        this.description = description;
     }
-
-    public int getId() {
-        return id;
+    public int getCode() {
+        return code;
+    }
+    public String getDescription() {
+        return description;
     }
 
 }
