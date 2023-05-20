@@ -48,13 +48,13 @@ public class ParcelController {
         parcelService.deleteParcel(parcelId);
     }
 
-    @PutMapping(path = "{parcelId}")
-    public void updateParcel(
+    /*@PutMapping(path = "{parcelId}")
+    public void updateParcel( //bad
             @PathVariable("parcelId") Long parcelId,
             @RequestParam(required = false) Customer senderId,
             @RequestParam(required = false) Customer receiverId,
             @RequestParam(required = false) String deliveryAddress,
             @RequestParam(required = false) ParcelEnum.Size size) {
         parcelService.updateParcel(parcelId, senderId, receiverId, deliveryAddress, size);
-    }
+    }*/
 }

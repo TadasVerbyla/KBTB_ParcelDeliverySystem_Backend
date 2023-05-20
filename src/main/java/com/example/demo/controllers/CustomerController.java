@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.CustomerEditDTO;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
 import com.example.demo.services.CustomerService;
@@ -30,14 +31,9 @@ public class CustomerController {
     @PutMapping(path = "{userId}")
     public ResponseEntity<String> updateUser(
             @PathVariable("userId") Long userId,
-            //@RequestParam(required = false) List<Parcel> sentParcels,
-            //@RequestParam(required = false) List<Parcel> incomingParcels,
-            @RequestParam(required = false) String password,
-            @RequestParam(required = false) String username,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String address) {
+            @RequestBody CustomerEditDTO customerEditDTO) {
         try {
-            customerService.updateUser(userId, password, username, email, address);
+            customerService.updateUser(userId, customerEditDTO.getPassword(), customerEditDTO.getUsername(), customerEditDTO.getEmail(), customerEditDTO.getAddress());
             return ResponseEntity.ok("User updated successfully");
         }catch (OptimisticLockException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict occurred while updating user");
