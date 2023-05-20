@@ -28,16 +28,10 @@ public class CustomerService {
     }
 
     @Transactional
-    public void updateUser(Long userId, List<Parcel> sentParcels, List<Parcel> incomingParcels, String password, String username, String email, String address) {
+    public void updateUser(Long userId, String password, String username, String email, String address) {
 
-        Customer customer = customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Specified entry does not exist. "));
+        Customer customer = customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Specified customer does not exist. "));
 
-        if (sentParcels != null) {
-            customer.setSentParcels(sentParcels);
-        }
-        if (incomingParcels != null) {
-            customer.setIncomingParcels(incomingParcels);
-        }
         if (password != null &&
                 password.length() > 0 &&
                 !Objects.equals(customer.getPassword(), password)) {
@@ -58,6 +52,6 @@ public class CustomerService {
                 !Objects.equals(customer.getAddress(), address)) {
             customer.setAddress(address);
         }
-
+        customerRepository.save(customer);
     }
 }

@@ -24,6 +24,9 @@ public class Customer{
     private String username;
     private String email;
     private String address;
+    @Version
+    private int version;
+
 
     public Customer() {
     }
@@ -99,6 +102,14 @@ public class Customer{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override
