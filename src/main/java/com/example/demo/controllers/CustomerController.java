@@ -16,6 +16,10 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {this.customerService = customerService; }
     @GetMapping
     public List<Customer> getUsers() { return customerService.getUsers(); }
+    @GetMapping(path = "{userId}")
+    public Customer getUser(@PathVariable("userId") Long userId){
+        return customerService.getUser(userId);
+    }
     @PostMapping
     public void addNewUser(@RequestBody Customer customer) { customerService.addNewUser(customer); }
     @DeleteMapping(path = "{userId}")

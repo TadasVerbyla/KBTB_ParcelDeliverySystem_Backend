@@ -16,6 +16,9 @@ public class CustomerService {
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {this.customerRepository = customerRepository; }
     public List<Customer> getUsers() { return customerRepository.findAll(); }
+    public Customer getUser(Long userId){
+        return customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Specified customer does not exist. "));
+    };
     public void addNewUser(Customer customer) { customerRepository.save(customer); }
     public void deleteUser(Long userId) {
         if (!customerRepository.existsById(userId)) {
