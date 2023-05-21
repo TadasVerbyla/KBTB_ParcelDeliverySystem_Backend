@@ -13,22 +13,24 @@ public class Parcel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    //@JoinColumn(name = "sender_id")
     @JsonIgnore
     private Customer sender;
     @ManyToOne
-    //@JoinColumn(name = "receiver_id")
     @JsonIgnore
     private Customer receiver;
-   // @ManyToOne
-   // @JoinColumn(name = "parcel_machine_id")
-    //private ParcelMachine parcelMachine;
+    @Transient
+    @JsonProperty("senderId")
+    private Long senderId;
+    @Transient
+    @JsonProperty("receiverId")
+    private Long receiverId;
+
     private String deliveryAddress;
     @Enumerated
     private ParcelEnum.Size size;
     @Enumerated
     private ShippingMethodEnum deliveryMethod;
-    @JsonProperty("_senderId")
+    /*@JsonProperty("_senderId")
     public Long getSenderId() {
         return sender != null ? sender.getId() : null;
     }
@@ -36,22 +38,24 @@ public class Parcel {
     @JsonProperty("_receiverId")
     public Long getReceiverId() {
         return receiver != null ? receiver.getId() : null;
-    }
+    }*/
 
     public Parcel() {
     }
 
-    public Parcel(Long id, Customer sender, Customer receiver, String deliveryAddress, ParcelEnum.Size size) {
+    public Parcel(Long id, Customer sender, Customer receiver, ShippingMethodEnum deliveryMethod, String deliveryAddress, ParcelEnum.Size size) {
         this.id = id;
         this.sender = sender;
         this.receiver = receiver;
+        this.deliveryMethod = deliveryMethod;
         this.deliveryAddress = deliveryAddress;
         this.size = size;
     }
 
-    public Parcel(Customer sender, Customer receiver, String deliveryAddress, ParcelEnum.Size size) {
+    public Parcel(Customer sender, Customer receiver, ShippingMethodEnum deliveryMethod, String deliveryAddress, ParcelEnum.Size size) {
         this.sender = sender;
         this.receiver = receiver;
+        this.deliveryMethod = deliveryMethod;
         this.deliveryAddress = deliveryAddress;
         this.size = size;
     }
@@ -78,6 +82,24 @@ public class Parcel {
 
     public void setReceiver(Customer receiver) {
         this.receiver = receiver;
+    }
+
+    public Long getSenderId() {
+
+        return this.senderId == null ? (sender != null ? sender.getId() : null) : this.senderId;
+    }
+
+    public void setSenderId(Long senderId) {
+        this.senderId = senderId;
+    }
+
+    public Long getReceiverId() {
+        return this.receiverId == null ? (receiver != null ? receiver.getId() : null) : this.receiverId;
+       //return receiver != null ? receiver.getId() : null;
+    }
+
+    public void setReceiverId(Long receiverId) {
+        this.receiverId = receiverId;
     }
 
     public String getDeliveryAddress() {
