@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import com.example.demo.enums.RoleEnum;
+//import com.example.demo.enums.RoleEnum;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

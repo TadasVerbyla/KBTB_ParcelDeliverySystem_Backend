@@ -3,8 +3,11 @@ package com.example.demo.controllers;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
 import com.example.demo.enums.ParcelEnum;
+import com.example.demo.interceptors.LoggingInterceptor;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.ParcelService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +19,13 @@ public class ParcelController {
 
     private final ParcelService parcelService;
     private final CustomerService customerService;
+    private final LoggingInterceptor loggingInterceptor;
 
     @Autowired
-    public ParcelController(ParcelService parcelService, CustomerService customerService){
+    public ParcelController(ParcelService parcelService, CustomerService customerService, LoggingInterceptor loggingInterceptor){
         this.parcelService = parcelService;
-        this. customerService = customerService;
+        this.customerService = customerService;
+        this.loggingInterceptor = loggingInterceptor;
     }
 
     @GetMapping
@@ -33,14 +38,22 @@ public class ParcelController {
     }
 
     @PostMapping
-    public void addNewParcel(@RequestBody Parcel parcel) {
-        Customer sender = customerService.getUser(parcel.getSenderId());
-        Customer receiver =customerService.getUser(parcel.getReceiverId());
-        //if (sender != null && receiver != null) {
-        parcel.setSender(sender);
-        parcel.setReceiver(receiver);
-        //} else {}
-        parcelService.addNewParcel(parcel);
+    public void addNewParcel(@RequestBody Parcel parcel, HttpServletRequest request, HttpServletResponse response) {
+        try {
+            loggingInterceptor.preHandle(request, response, this);
+
+            Customer sender = customerService.getUser(parcel.getSenderId());
+            Customer receiver = customerService.getUser(parcel.getReceiverId());
+            parcel.setSender(sender);
+            parcel.setReceiver(receiver);
+
+            parcelService.addNewParcel(parcel);
+
+            loggingInterceptor.postHandle(request, response, this, null);
+            loggingInterceptor.afterCompletion(request, response, this, null);
+        } catch (Exception e) {
+            // Handle exceptions if needed
+        }
     }
 
     @DeleteMapping(path = "{parcelId}")
