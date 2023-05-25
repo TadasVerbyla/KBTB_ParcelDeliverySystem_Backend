@@ -27,7 +27,6 @@ public class WebSecurityConfig {
         this.passwordEncoder = passwordEncoder;
     }
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         CorsConfigurationSource corsConfigurationSource;
