@@ -16,7 +16,7 @@ const LoginForm = () => {
 
         try {
             // Replace 'http://localhost:8080/protected-endpoint' with your endpoint
-            const response = await axios.get('http://localhost:8080/protected-endpoint', { headers });
+            const response = await axios.get('http://localhost:8080/api/V1/parcel', { headers });
 
             // If the request is successful, your user is authenticated.
             console.log(response.data);

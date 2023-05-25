@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/V1/parcel")
+@CrossOrigin("*")
 public class ParcelController {
 
     private final ParcelService parcelService;
