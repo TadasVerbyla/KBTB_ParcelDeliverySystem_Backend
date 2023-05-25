@@ -2,16 +2,19 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
-import com.example.demo.enums.ParcelEnum;
+import com.example.demo.enums.ParcelEnum.Size;
+import com.example.demo.enums.ShippingMethodEnum;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.ParcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/V1/parcel")
+@CrossOrigin("*")
 public class ParcelController {
 
     private final ParcelService parcelService;
@@ -33,13 +36,28 @@ public class ParcelController {
     }
 
     @PostMapping
-    public void addNewParcel(@RequestBody Parcel parcel) {
-        Customer sender = customerService.getUser(parcel.getSenderId());
-        Customer receiver =customerService.getUser(parcel.getReceiverId());
-        //if (sender != null && receiver != null) {
+    public void addNewParcel(@RequestBody Map<String, Object> requestBody) {
+        Parcel parcel = new Parcel();
+        Integer senderId = (Integer) requestBody.get("senderId");
+        Integer receiverId = (Integer) requestBody.get("receiverId");
+        String deliveryString = (String) requestBody.get("deliveryMethod");
+        ShippingMethodEnum deliveryMethod = ShippingMethodEnum.valueOf(deliveryString);
+        String deliveryAddress = (String) requestBody.get("deliveryAddress");
+        String sizeString = (String) requestBody.get("size");
+        Size size = Size.valueOf(sizeString);
+
+
+        Customer sender = customerService.getUser(senderId.longValue());
         parcel.setSender(sender);
-        parcel.setReceiver(receiver);
-        //} else {}
+        if (receiverId != 0) {
+            Customer receiver = customerService.getUser(receiverId.longValue());
+            parcel.setReceiver(receiver);
+            deliveryAddress = receiver.getAddress();
+        }
+        parcel.setDeliveryMethod(deliveryMethod);
+        parcel.setDeliveryAddress(deliveryAddress);
+        parcel.setSize(size);
+
         parcelService.addNewParcel(parcel);
     }
 
