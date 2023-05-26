@@ -22,12 +22,12 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {this.customerService = customerService; }
     @GetMapping
     public List<Customer> getUsers() { return customerService.getUsers(); }
-    @GetMapping(path = "{userId}")
+    @GetMapping("/{userId}")
     public Customer getUser(@PathVariable("userId") Long userId){
         return customerService.getUser(userId);
     }
     @GetMapping("/name/{username}")
-    public ResponseEntity<Long> getUserIdByUsername(@PathVariable String username) {
+    public ResponseEntity<Long> getUserIdByUsername(@PathVariable("username") String username) {
         Optional<Customer> user = customerService.getUserByUsername(username);
         if (user != null) {
             return ResponseEntity.ok(user.get().getId());
