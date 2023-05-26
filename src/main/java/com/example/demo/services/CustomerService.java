@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @SessionScope
@@ -30,6 +31,10 @@ public class CustomerService {
     public Customer getUser(Long userId){
         return customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("Specified customer does not exist. "));
     };
+    public Optional<Customer> getUserByUsername(String username) {
+        Optional<Customer> customer = customerRepository.findByUsername(username);
+        return customer;
+    }
 
     @Transactional
     public void addNewUser(Customer customer) {

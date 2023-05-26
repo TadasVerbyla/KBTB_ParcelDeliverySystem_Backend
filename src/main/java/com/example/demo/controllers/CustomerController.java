@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/V1/customer")
@@ -25,7 +26,15 @@ public class CustomerController {
     public Customer getUser(@PathVariable("userId") Long userId){
         return customerService.getUser(userId);
     }
-
+    @GetMapping("/name/{username}")
+    public ResponseEntity<Long> getUserIdByUsername(@PathVariable String username) {
+        Optional<Customer> user = customerService.getUserByUsername(username);
+        if (user != null) {
+            return ResponseEntity.ok(user.get().getId());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @PostMapping
     public void addNewUser(@RequestBody Customer customer) { customerService.addNewUser(customer); }
     @DeleteMapping(path = "{userId}")
