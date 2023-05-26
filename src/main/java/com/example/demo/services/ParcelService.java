@@ -41,6 +41,7 @@ public class ParcelService {
         parcelRepository.save(parcel);
     }
 
+    @Transactional
     public void deleteParcel(Long parcelId) {
         if (!parcelRepository.existsById(parcelId)) {
             throw new IllegalStateException("Specified entry does not exist. ");

@@ -37,9 +37,9 @@ public class CustomerController {
     }
     @PostMapping
     public void addNewUser(@RequestBody Customer customer) { customerService.addNewUser(customer); }
-    @DeleteMapping(path = "{userId}")
+    @DeleteMapping(path = "/{userId}")
     public void deleteUser(@PathVariable("userId") Long userId) { customerService.deleteUser(userId); }
-    @PutMapping(path = "{userId}")
+    @PutMapping(path = "/{userId}")
     public ResponseEntity<String> updateUser(
             @PathVariable("userId") Long userId,
             @RequestBody CustomerEditDTO customerEditDTO) {

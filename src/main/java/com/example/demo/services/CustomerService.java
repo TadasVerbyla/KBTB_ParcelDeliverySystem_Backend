@@ -44,6 +44,7 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
+    @Transactional
     public void deleteUser(Long userId) {
         if (!customerRepository.existsById(userId)) {
             throw new IllegalStateException("Specified entry does not exist. ");
