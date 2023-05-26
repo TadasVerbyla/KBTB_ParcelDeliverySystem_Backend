@@ -13,11 +13,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
     public WebConfig(LoggingInterceptor loggingInterceptor) {
+
         this.loggingInterceptor = loggingInterceptor;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loggingInterceptor).addPathPatterns("/api/V1/shipping-methods/**");
+        registry.addInterceptor(loggingInterceptor).addPathPatterns("/api/V1/customer/**");
+        registry.addInterceptor(loggingInterceptor).addPathPatterns("/api/V1/parcel/**");
     }
 }

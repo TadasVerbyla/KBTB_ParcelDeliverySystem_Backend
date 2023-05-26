@@ -2,29 +2,31 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
-import com.example.demo.enums.ParcelEnum;
+import com.example.demo.enums.ParcelEnum.Size;
+import com.example.demo.enums.ShippingMethodEnum;
 import com.example.demo.interceptors.LoggingInterceptor;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.ParcelService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
+@Lazy
 @RestController
 @RequestMapping("api/V1/parcel")
+@CrossOrigin("*")
 public class ParcelController {
 
     private final ParcelService parcelService;
     private final CustomerService customerService;
     private final LoggingInterceptor loggingInterceptor;
-
     @Autowired
-    public ParcelController(ParcelService parcelService, CustomerService customerService, LoggingInterceptor loggingInterceptor){
+    public ParcelController(LoggingInterceptor loggingInterceptor, ParcelService parcelService, CustomerService customerService){
         this.parcelService = parcelService;
-        this.customerService = customerService;
+        this. customerService = customerService;
         this.loggingInterceptor = loggingInterceptor;
     }
 
@@ -38,22 +40,29 @@ public class ParcelController {
     }
 
     @PostMapping
-    public void addNewParcel(@RequestBody Parcel parcel, HttpServletRequest request, HttpServletResponse response) {
-        try {
-            loggingInterceptor.preHandle(request, response, this);
+    public void addNewParcel(@RequestBody Map<String, Object> requestBody) {
+        Parcel parcel = new Parcel();
+        Integer senderId = (Integer) requestBody.get("senderId");
+        Integer receiverId = (Integer) requestBody.get("receiverId");
+        String deliveryString = (String) requestBody.get("deliveryMethod");
+        ShippingMethodEnum deliveryMethod = ShippingMethodEnum.valueOf(deliveryString);
+        String deliveryAddress = (String) requestBody.get("deliveryAddress");
+        String sizeString = (String) requestBody.get("size");
+        Size size = Size.valueOf(sizeString);
 
-            Customer sender = customerService.getUser(parcel.getSenderId());
-            Customer receiver = customerService.getUser(parcel.getReceiverId());
-            parcel.setSender(sender);
+
+        Customer sender = customerService.getUser(senderId.longValue());
+        parcel.setSender(sender);
+        if (receiverId != 0) {
+            Customer receiver = customerService.getUser(receiverId.longValue());
             parcel.setReceiver(receiver);
-
-            parcelService.addNewParcel(parcel);
-
-            loggingInterceptor.postHandle(request, response, this, null);
-            loggingInterceptor.afterCompletion(request, response, this, null);
-        } catch (Exception e) {
-            // Handle exceptions if needed
+            deliveryAddress = receiver.getAddress();
         }
+        parcel.setDeliveryMethod(deliveryMethod);
+        parcel.setDeliveryAddress(deliveryAddress);
+        parcel.setSize(size);
+
+        parcelService.addNewParcel(parcel);
     }
 
     @DeleteMapping(path = "{parcelId}")
