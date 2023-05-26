@@ -44,10 +44,13 @@ public class CustomerController {
             @PathVariable("userId") Long userId,
             @RequestBody CustomerEditDTO customerEditDTO) {
         try {
-            customerService.updateUser(userId, customerEditDTO.getPassword(), customerEditDTO.getUsername(), customerEditDTO.getEmail(), customerEditDTO.getAddress());
+            customerService.updateUser(userId, customerEditDTO.getPassword(), customerEditDTO.getUsername(), customerEditDTO.getEmail(), customerEditDTO.getAddress(), customerEditDTO.getVersion());
             return ResponseEntity.ok("User updated successfully");
         }catch (OptimisticLockException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict occurred while updating user");
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating user");
         }
 
     }
