@@ -78,3 +78,110 @@ geg. 27, 2023 10:48:52 PRIEŠPIET com.example.demo.interceptors.LoggingIntercept
 INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 10:48:52
 geg. 27, 2023 10:48:52 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
 INFO: Memory Usage: 44046512 bytes / 1973420032 bytes
+<<<<<<< Updated upstream
+=======
+geg. 27, 2023 11:25:32 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: addNewParcel | Start Time: 2023-05-27 11:25:32
+geg. 27, 2023 11:25:32 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 55580848 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:32 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: addNewParcel | Start Time: 2023-05-27 11:25:32
+geg. 27, 2023 11:25:32 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 55580848 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 60823728 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 60823728 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 65018032 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 65018032 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 67115184 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:50
+geg. 27, 2023 11:25:50 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 69212336 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 35893168 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 36941744 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 40087472 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 41136048 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 43233200 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:51 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:51
+geg. 27, 2023 11:25:52 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 45330352 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 53718960 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 53718960 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 57913264 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 57913264 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 60010416 bytes / 1973420032 bytes
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:25:55
+geg. 27, 2023 11:25:55 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 62107568 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:02 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:26:02
+geg. 27, 2023 11:26:02 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:26:02
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 72593328 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 72593328 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:26:03
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: ParcelController | Method: getParcels | Start Time: 2023-05-27 11:26:03
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 37930352 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 37930352 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:26:03
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 40027504 bytes / 1973420032 bytes
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor preHandle
+INFO: User: admin | Rights:  | Class: CustomerController | Method: getUsers | Start Time: 2023-05-27 11:26:03
+geg. 27, 2023 11:26:03 PRIEŠPIET com.example.demo.interceptors.LoggingInterceptor afterCompletion
+INFO: Memory Usage: 42124656 bytes / 1973420032 bytes
+>>>>>>> Stashed changes
