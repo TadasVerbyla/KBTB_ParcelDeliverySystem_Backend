@@ -4,14 +4,17 @@ import com.example.demo.entities.Customer;
 import com.example.demo.entities.Parcel;
 import com.example.demo.enums.ParcelEnum.Size;
 import com.example.demo.enums.ShippingMethodEnum;
+import com.example.demo.interceptors.LoggingInterceptor;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.ParcelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Lazy
 @RestController
 @RequestMapping("api/V1/parcel")
 @CrossOrigin("*")
@@ -19,18 +22,19 @@ public class ParcelController {
 
     private final ParcelService parcelService;
     private final CustomerService customerService;
-
+    private final LoggingInterceptor loggingInterceptor;
     @Autowired
-    public ParcelController(ParcelService parcelService, CustomerService customerService){
+    public ParcelController(LoggingInterceptor loggingInterceptor, ParcelService parcelService, CustomerService customerService){
         this.parcelService = parcelService;
         this. customerService = customerService;
+        this.loggingInterceptor = loggingInterceptor;
     }
 
     @GetMapping
     public List<Parcel> getParcels(){
         return parcelService.getParcels();
     }
-    @GetMapping(path = "/{parcelId}")
+    @GetMapping(path = "{parcelId}")
     public Parcel getParcel(@PathVariable("parcelId") Long parcelId){
         return parcelService.getParcel(parcelId);
     }
@@ -61,7 +65,7 @@ public class ParcelController {
         parcelService.addNewParcel(parcel);
     }
 
-    @DeleteMapping(path = "/{parcelId}")
+    @DeleteMapping(path = "{parcelId}")
     public void deleteParcel(@PathVariable("parcelId") Long parcelId) {
         parcelService.deleteParcel(parcelId);
     }
