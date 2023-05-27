@@ -5,7 +5,6 @@ public class CustomerEditDTO {
     private String username;
     private String email;
     private String address;
-    private Integer version;
 
     public String getPassword() {
         return password;
@@ -37,13 +36,5 @@ public class CustomerEditDTO {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 }
