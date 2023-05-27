@@ -34,7 +34,7 @@ public class ParcelController {
     public List<Parcel> getParcels(){
         return parcelService.getParcels();
     }
-    @GetMapping(path = "{parcelId}")
+    @GetMapping(path = "/{parcelId}")
     public Parcel getParcel(@PathVariable("parcelId") Long parcelId){
         return parcelService.getParcel(parcelId);
     }
@@ -65,7 +65,7 @@ public class ParcelController {
         parcelService.addNewParcel(parcel);
     }
 
-    @DeleteMapping(path = "{parcelId}")
+    @DeleteMapping(path = "/{parcelId}")
     public void deleteParcel(@PathVariable("parcelId") Long parcelId) {
         parcelService.deleteParcel(parcelId);
     }
